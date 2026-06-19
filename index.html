@@ -1,0 +1,903 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Банкротство гражданина - пошаговые рекомендации</title>
+  <meta name="description" content="Пошаговые рекомендации по судебному и внесудебному банкротству гражданина в России.">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Перейти к содержанию</a>
+
+  <header class="site-header">
+    <div class="brand" aria-label="Банкротство гражданина">
+      <span>
+        <strong>Банкротство гражданина</strong>
+      </span>
+    </div>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+      <a href="#route">Маршрут</a>
+      <a href="#court">Через суд</a>
+      <a href="#mfc">Через МФЦ</a>
+      <a href="#practice">Инструкции</a>
+      <a href="#documents">Документы</a>
+      <a href="#consequences">Последствия</a>
+      <a href="#contacts">Куда обращаться</a>
+    </nav>
+  </header>
+
+  <main id="main">
+    <section class="intro-section" id="route" data-page="route">
+      <div class="intro-grid">
+        <div class="intro-copy">
+          <h1>Банкротство гражданина</h1>
+          <div class="toc-box">
+            <h2>Содержание</h2>
+            <ol>
+              <li><a href="#route">Определить порядок обращения</a></li>
+              <li><a href="#court">Подать заявление в арбитражный суд</a></li>
+              <li><a href="#mfc">Обратиться во внесудебном порядке через МФЦ</a></li>
+              <li><a href="#practice">Разобраться с подачей, судом, депозитом и управляющим</a></li>
+              <li><a href="#documents">Собрать документы</a></li>
+              <li><a href="#consequences">Проверить последствия банкротства</a></li>
+              <li><a href="#contacts">Найти официальные сервисы</a></li>
+            </ol>
+          </div>
+          <div class="search-box" role="search">
+            <label for="site-search">Быстрый поиск по сайту</label>
+            <div class="search-field">
+              <input id="site-search" type="search" placeholder="Например: финуправляющий, алименты, МФЦ">
+              <button type="button" id="clear-search" aria-label="Очистить поиск">×</button>
+            </div>
+            <div class="search-results" id="search-results" aria-live="polite"></div>
+          </div>
+
+          <div class="intro-downloads searchable" data-title="Бланки заявлений и приложений">
+            <div class="intro-downloads-head">
+              <h2>Бланки под рукой</h2>
+              <span>DOCX</span>
+            </div>
+            <div class="intro-downloads-grid">
+              <a href="forms/court-bankruptcy-application.docx" download>Заявление в суд</a>
+              <a href="forms/mfc-extrajudicial-bankruptcy-application.docx" download>Заявление в МФЦ</a>
+              <a href="forms/creditors-and-debtors-list.docx" download>Список кредиторов</a>
+              <a href="forms/property-inventory.docx" download>Опись имущества</a>
+            </div>
+          </div>
+        </div>
+
+        <form class="route-panel" id="route-form">
+          <div class="panel-heading">
+            <h2>Определить порядок обращения</h2>
+          </div>
+
+          <label class="field-label" for="debt-amount">Общая сумма долга, руб.</label>
+          <input class="amount-input" id="debt-amount" name="debtAmount" type="number" inputmode="numeric" min="0" step="1000" value="500000">
+
+          <div class="toggle-grid" aria-label="Условия">
+            <label><input type="checkbox" name="cannotPay" checked> Нет возможности платить в срок</label>
+            <label><input type="checkbox" name="oneCreditorBlocks"> Если платить одному кредитору, не останется денег на других</label>
+            <label><input type="checkbox" name="overdue3"> Просрочка больше 3 месяцев</label>
+            <label><input type="checkbox" name="closedFssp"> Пристав окончил производство по п. 4 ч. 1 ст. 46</label>
+            <label><input type="checkbox" name="noOpenFssp"> Нет новых открытых производств после возврата</label>
+            <label><input type="checkbox" name="pensioner"> Основной доход - пенсия</label>
+            <label><input type="checkbox" name="childBenefit"> Получаю ежемесячное пособие на ребенка</label>
+            <label><input type="checkbox" name="svo"> Принимаю или принимал участие в СВО</label>
+            <label><input type="checkbox" name="execOver1"> Исполнительный документ выдан не позднее чем за 1 год до обращения и предъявлялся к исполнению</label>
+            <label><input type="checkbox" name="execOver7"> Исполнительный документ выдан не позднее чем за 7 лет до обращения и предъявлялся к исполнению</label>
+            <label><input type="checkbox" name="noProperty"> Нет имущества, на которое можно обратить взыскание</label>
+            <label><input type="checkbox" name="recentBankruptcy"> Уже проходил банкротство менее 5 лет назад</label>
+          </div>
+
+          <output class="route-result" id="route-result" for="debt-amount">
+            Заполните условия - подсказка появится здесь.
+          </output>
+          <p class="fineprint">Это предварительная проверка. Итоговое решение принимает МФЦ или арбитражный суд.</p>
+        </form>
+      </div>
+    </section>
+
+    <section class="snapshot-section" aria-labelledby="snapshot-title" data-page="route">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2 id="snapshot-title">Что важно знать до подачи заявления</h2>
+        </div>
+        <div class="metric-grid">
+          <article class="metric-card searchable" data-title="Судебное банкротство">
+            <strong>Суд</strong>
+            <span>Должник вправе обратиться даже без порога 500 000 руб., если очевидно не сможет исполнить обязательства.</span>
+          </article>
+          <article class="metric-card searchable" data-title="Обязанность обратиться в суд">
+            <strong>30 рабочих дней</strong>
+            <span>Обязанность подать заявление возникает, когда выплаты одному кредитору делают невозможными расчеты с другими, а долг не менее 500 000 руб.</span>
+          </article>
+          <article class="metric-card searchable" data-title="Внесудебное банкротство МФЦ">
+            <strong>25 000 - 1 000 000 руб.</strong>
+            <span>Такой диапазон долга нужен для внесудебного порядка через МФЦ при наличии специальных оснований.</span>
+          </article>
+          <article class="metric-card searchable" data-title="Госпошлина и депозит">
+            <strong>0 ₽ + 25 000 ₽</strong>
+            <span>При заявлении самого должника госпошлина не взимается. Депозит 25 000 руб. вносится после принятия заявления судом и появления номера дела.</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="paths-section" aria-labelledby="paths-title" data-page="route">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2 id="paths-title">Выберите процедуру по условиям</h2>
+        </div>
+        <div class="comparison-grid">
+          <article class="path-card searchable" data-title="Судебное банкротство через арбитражный суд">
+            <div class="path-label court">Арбитражный суд</div>
+            <h3>Когда нужен суд</h3>
+            <p>Подходит, если у гражданина есть признаки неплатежеспособности или недостаточности имущества, есть спорные долги, имущество, залоги, сделки за последние годы или нет условий для МФЦ.</p>
+            <ul class="clean-list">
+              <li>подается заявление по месту жительства;</li>
+              <li>участвует финансовый управляющий;</li>
+              <li>возможны реструктуризация долгов, реализация имущества или мировое соглашение;</li>
+              <li>после завершения часть долгов может быть списана, но не все виды обязательств.</li>
+            </ul>
+            <a class="text-link" href="#court">Смотреть судебный порядок</a>
+          </article>
+
+          <article class="path-card searchable" data-title="Внесудебное банкротство через МФЦ">
+            <div class="path-label mfc">МФЦ</div>
+            <h3>Когда можно через МФЦ</h3>
+            <p>Подходит для долгов от 25 000 до 1 000 000 руб., если есть одно из установленных законом оснований и заявление подается в МФЦ по месту жительства или пребывания.</p>
+            <ul class="clean-list">
+              <li>процедура бесплатная;</li>
+              <li>срок - 6 месяцев;</li>
+              <li>не нужен финансовый управляющий;</li>
+              <li>важно указать всех известных кредиторов, иначе неуказанные требования не спишутся.</li>
+            </ul>
+            <a class="text-link" href="#mfc">Смотреть внесудебный порядок</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section" id="court" aria-labelledby="court-title" data-page="court">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2 id="court-title">Как подать заявление в арбитражный суд</h2>
+        </div>
+
+        <form class="eligibility-panel searchable" id="court-check-form" data-title="Проверить подходит ли судебное банкротство">
+          <div>
+            <h3>Сначала проверьте, нужен ли суд</h3>
+            <p>Ответьте на простые вопросы. Это не заменяет решение суда, но помогает понять, есть ли смысл готовить судебное заявление.</p>
+          </div>
+          <div class="eligibility-grid">
+            <label>
+              <span>Сумма всех долгов, руб.</span>
+              <input class="amount-input" name="courtDebt" type="number" inputmode="numeric" min="0" step="1000" value="500000">
+            </label>
+            <label><input type="checkbox" name="courtCannotPay" checked> Денег не хватает, чтобы платить по графику</label>
+            <label><input type="checkbox" name="courtOneCreditorBlocks"> Если платить одному кредитору, не останется денег на других</label>
+            <label><input type="checkbox" name="courtStoppedPayments"> Уже прекратили платить по наступившим долгам</label>
+            <label><input type="checkbox" name="courtTenPercent"> Больше 10% наступивших долгов не платится дольше месяца</label>
+            <label><input type="checkbox" name="courtPropertyShortage"> Имущества меньше, чем долгов</label>
+            <label><input type="checkbox" name="courtNoPropertyEnforcement"> Есть окончание исполнительного производства из-за отсутствия имущества</label>
+            <label><input type="checkbox" name="courtSoonMoney"> Ожидается поступление денег, которого хватит закрыть наступившие долги</label>
+            <label><input type="checkbox" name="courtRecentBankruptcy"> Банкротство уже завершалось менее 5 лет назад</label>
+          </div>
+          <output class="eligibility-result" id="court-check-result">Заполните условия - вывод появится здесь.</output>
+          <div class="action-row">
+            <a class="action-button" href="forms/court-bankruptcy-application.docx" download>Скачать заявление в суд</a>
+            <a class="action-button secondary" href="#documents">Открыть список документов</a>
+          </div>
+        </form>
+
+        <div class="accordion-guide">
+          <details class="action-step searchable" data-title="Суд шаг 1 основания" open>
+            <summary><span>1</span><strong>Понять, что такое судебное заявление</strong></summary>
+            <div class="step-content">
+              <p>Это документ в арбитражный суд. В нем гражданин просит признать его банкротом, объясняет, почему не может платить, перечисляет кредиторов, имущество, доходы, счета и выбранную СРО управляющих.</p>
+              <p class="note-line">Просрочка 3 месяца не является обязательным условием для заявления самого гражданина. В суд можно обращаться и при предвидении банкротства, если обстоятельства уже показывают невозможность платить в срок.</p>
+              <div class="action-row">
+                <a class="action-button" href="forms/court-bankruptcy-application.docx" download>Скачать форму заявления</a>
+                <a class="action-button secondary" href="#practice">Как найти суд</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="action-step searchable" data-title="Суд шаг 2 заполнить заявление">
+            <summary><span>2</span><strong>Заполнить заявление понятно и полно</strong></summary>
+            <div class="step-content">
+              <ul class="plain-list">
+                <li><strong>Куда:</strong> арбитражный суд по месту жительства.</li>
+                <li><strong>Кто подает:</strong> ФИО, адрес, дата рождения, СНИЛС, ИНН, телефон.</li>
+                <li><strong>Кому должны:</strong> банки, МФО, ФНС, ЖКУ, физические лица и суммы долга.</li>
+                <li><strong>Почему не можете платить:</strong> потеря дохода, просрочка, исполнительные производства, болезнь, долги больше имущества.</li>
+                <li><strong>Кого выбрать:</strong> СРО арбитражных управляющих. Конкретного управляющего утвердит суд.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="action-step searchable" data-title="Суд шаг 3 найти СРО финансового управляющего">
+            <summary><span>3</span><strong>Найти СРО финансовых управляющих</strong></summary>
+            <div class="step-content">
+              <p>Финансовый управляющий нужен обязательно. В заявлении указывается саморегулируемая организация, из которой суд выберет управляющего.</p>
+              <ol class="manual-steps">
+                <li>Откройте ЕФРСБ.</li>
+                <li>Найдите реестр СРО арбитражных управляющих.</li>
+                <li>Свяжитесь с выбранной СРО или управляющими и уточните готовность участвовать в деле.</li>
+              </ol>
+              <div class="action-row">
+                <a class="action-button secondary" href="https://bankrot.fedresurs.ru/" target="_blank" rel="noreferrer">Открыть ЕФРСБ</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="action-step searchable" data-title="Суд шаг 4 депозит и расходы">
+            <summary><span>4</span><strong>Подготовить деньги на процедуру</strong></summary>
+            <div class="step-content">
+              <p>Госпошлина для заявления самого должника не платится. Депозит 25 000 руб. на вознаграждение финансового управляющего вносится после того, как суд примет заявление и появится номер дела, но до заседания по проверке обоснованности заявления.</p>
+              <p class="note-line">В платежном документе указывают номер дела. Реквизиты берут на сайте именно вашего арбитражного суда.</p>
+            </div>
+          </details>
+
+          <details class="action-step searchable" data-title="Суд шаг 5 собрать документы и приложения">
+            <summary><span>5</span><strong>Собрать приложения</strong></summary>
+            <div class="step-content">
+              <p>К заявлению прикладывают доказательства: долги, доходы, банковские счета, электронные денежные средства и цифровые рубли при наличии, имущество, сделки за 3 года, СНИЛС, ИНН, отсутствие статуса ИП, список кредиторов и опись имущества.</p>
+              <div class="action-row">
+                <a class="action-button" href="forms/creditors-and-debtors-list.docx" download>Список кредиторов</a>
+                <a class="action-button" href="forms/property-inventory.docx" download>Опись имущества</a>
+                <a class="action-button secondary" href="#documents">Полный чек-лист</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="action-step searchable" data-title="Суд шаг 6 направить копии кредиторам">
+            <summary><span>6</span><strong>Отправить копии кредиторам</strong></summary>
+            <div class="step-content">
+              <p>Перед подачей в суд отправьте кредиторам копии заявления и приложений, которых у них нет. Сохраните почтовую квитанцию и опись вложения - это доказательство для суда.</p>
+            </div>
+          </details>
+
+          <details class="action-step searchable" data-title="Суд шаг 7 подать заявление">
+            <summary><span>7</span><strong>Подать заявление</strong></summary>
+            <div class="step-content">
+              <p>Есть три способа: через «Мой арбитр», лично в канцелярию суда или заказным письмом с описью вложения. Самый удобный способ - электронно через «Мой арбитр» с подтвержденной учетной записью Госуслуг.</p>
+              <div class="action-row">
+                <a class="action-button" href="https://my.arbitr.ru/" target="_blank" rel="noreferrer">Подать через «Мой арбитр»</a>
+                <a class="action-button secondary" href="#practice">Пошаговая инструкция подачи</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="action-step searchable" data-title="Суд шаг 8 следить за делом">
+            <summary><span>8</span><strong>Следить за делом после подачи</strong></summary>
+            <div class="step-content">
+              <p>После подачи суд проверит заявление. Судебные акты и заседания удобно смотреть в Картотеке арбитражных дел.</p>
+              <div class="action-row">
+                <a class="action-button secondary" href="https://kad.arbitr.ru/" target="_blank" rel="noreferrer">Открыть картотеку</a>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="info-grid">
+          <article class="info-block searchable" data-title="Процедуры в судебном банкротстве">
+            <h3>Что делает суд</h3>
+            <ul class="clean-list">
+              <li><strong>Реструктуризация долгов:</strong> план погашения до 5 лет, а в отдельных случаях до 3 лет при утверждении судом без согласия собрания кредиторов.</li>
+              <li><strong>Реализация имущества:</strong> имущество включается в конкурсную массу и продается, выручка распределяется между кредиторами.</li>
+              <li><strong>Мировое соглашение:</strong> должник и кредиторы договариваются, производство прекращается на согласованных условиях.</li>
+            </ul>
+          </article>
+          <article class="info-block searchable" data-title="Имущество при банкротстве">
+            <h3>Что обычно проверяют</h3>
+            <ul class="clean-list">
+              <li>недвижимость, автомобили, доли, вклады, счета и ценные бумаги;</li>
+              <li>сделки за последние 3 года, особенно дарение, продажу ниже рынка и вывод активов;</li>
+              <li>семейное имущество и брачный договор;</li>
+              <li>залоги, ипотеку и поручительства.</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="guide-section alt" id="mfc" aria-labelledby="mfc-title" data-page="mfc">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2 id="mfc-title">Как пройти банкротство через МФЦ</h2>
+        </div>
+
+        <form class="eligibility-panel searchable" id="mfc-check-form" data-title="Проверить подходит ли внесудебное банкротство через МФЦ">
+          <div>
+            <h3>Проверьте, можно ли через МФЦ</h3>
+            <p>МФЦ подходит не всем. Выберите сумму долга и основание - сайт сразу покажет предварительный вывод.</p>
+          </div>
+          <div class="eligibility-grid">
+            <label>
+              <span>Сумма всех долгов, руб.</span>
+              <input class="amount-input" name="mfcDebt" type="number" inputmode="numeric" min="0" step="1000" value="500000">
+            </label>
+            <label><input type="radio" name="mfcGround" value="closed" checked> Пристав окончил производство по п. 4 ч. 1 ст. 46, новых производств нет</label>
+            <label><input type="radio" name="mfcGround" value="pension"> Основной доход - пенсия, есть нужный исполнительный документ, имущества для взыскания нет</label>
+            <label><input type="radio" name="mfcGround" value="benefit"> Получаю ежемесячное пособие на ребенка, есть нужный исполнительный документ, имущества для взыскания нет</label>
+            <label><input type="radio" name="mfcGround" value="svo"> Принимаю или принимал участие в СВО, есть нужный исполнительный документ, имущества для взыскания нет</label>
+            <label><input type="radio" name="mfcGround" value="old"> Исполнительный документ выдан не позднее чем за 7 лет до обращения и не исполнен полностью</label>
+            <label><input type="radio" name="mfcGround" value="none"> Ничего из этого не подходит</label>
+            <label><input type="checkbox" name="mfcRecentBankruptcy"> Банкротство уже завершалось менее 5 лет назад</label>
+          </div>
+          <output class="eligibility-result" id="mfc-check-result">Выберите основание - вывод появится здесь.</output>
+          <div class="action-row">
+            <a class="action-button" href="forms/mfc-extrajudicial-bankruptcy-application.docx" download>Скачать заявление в МФЦ</a>
+            <a class="action-button secondary" href="forms/creditors-and-debtors-list.docx" download>Скачать список кредиторов</a>
+          </div>
+        </form>
+
+        <div class="accordion-guide">
+          <details class="action-step searchable" data-title="МФЦ шаг 1 что такое заявление" open>
+            <summary><span>1</span><strong>Понять, что подается в МФЦ</strong></summary>
+            <div class="step-content">
+              <p>Подается заявление о признании гражданина банкротом во внесудебном порядке и список всех известных кредиторов. В сумму для МФЦ включают денежные обязательства и обязательные платежи, в том числе еще не наступившие, алименты и обязательства по поручительству.</p>
+              <p class="note-line">Важно указать всех кредиторов: неуказанные долги не спишутся. Повторно подать заявление во внесудебном порядке можно не раньше чем через 5 лет после завершения или прекращения предыдущей процедуры.</p>
+              <div class="action-row">
+                <a class="action-button" href="forms/mfc-extrajudicial-bankruptcy-application.docx" download>Скачать заявление в МФЦ</a>
+                <a class="action-button" href="forms/creditors-and-debtors-list.docx" download>Скачать список кредиторов</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="action-step searchable" data-title="МФЦ шаг 2 выбрать основание">
+            <summary><span>2</span><strong>Выбрать свое основание</strong></summary>
+            <div class="step-content">
+              <ul class="plain-list">
+                <li><strong>Оконченное исполнительное производство:</strong> пристав вернул исполнительный документ из-за невозможности взыскания, и новых открытых производств нет.</li>
+                <li><strong>Пенсия, пособие или СВО:</strong> нужен исполнительный документ, выданный не позднее чем за 1 год до обращения, предъявленный к исполнению и не исполненный полностью; имущества для взыскания нет.</li>
+                <li><strong>Семь лет:</strong> исполнительный документ выдан не позднее чем за 7 лет до обращения, предъявлялся к исполнению и не исполнен полностью.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="action-step searchable" data-title="МФЦ шаг 3 собрать справки">
+            <summary><span>3</span><strong>Собрать справки по основанию</strong></summary>
+            <div class="step-content">
+              <p>Если обращение идет по пенсии, пособию, СВО или основанию «7 лет», нужны справки по установленным формам. Такие справки должны быть выданы не ранее чем за 3 месяца до обращения.</p>
+              <p class="note-line">Если основание - оконченное исполнительное производство, проверьте сведения на сайте ФССП и отсутствие новых открытых производств.</p>
+            </div>
+          </details>
+
+          <details class="action-step searchable" data-title="МФЦ шаг 4 подать документы">
+            <summary><span>4</span><strong>Подать документы в МФЦ</strong></summary>
+            <div class="step-content">
+              <p>Подайте заявление в МФЦ по месту жительства или пребывания. Возьмите паспорт; также лучше иметь СНИЛС и ИНН, если их запросят при приеме. Если подает представитель - нужна доверенность и паспорт представителя.</p>
+              <div class="action-row">
+                <a class="action-button secondary" href="https://моидокументы.рф/" target="_blank" rel="noreferrer">Найти МФЦ</a>
+                <a class="action-button secondary" href="https://mfc.permkrai.ru/informatsiya-o-filialakh/filialy-mfts/" target="_blank" rel="noreferrer">МФЦ Пермского края</a>
+              </div>
+            </div>
+          </details>
+
+          <details class="action-step searchable" data-title="МФЦ шаг 5 что будет после подачи">
+            <summary><span>5</span><strong>Понять, что будет после подачи</strong></summary>
+            <div class="step-content">
+              <p>МФЦ проверит условия и опубликует сведения в ЕФРСБ. Процедура длится 6 месяцев. В этот период нельзя брать новые кредиты и займы, выдавать поручительства. После завершения списываются только указанные в заявлении долги, если нет оснований для прекращения процедуры.</p>
+              <p class="note-line">Если заявление вернули без возбуждения процедуры, повторно обратиться можно не ранее чем через 1 месяц со дня возврата. Пятилетний срок относится к повторному обращению после завершения или прекращения процедуры банкротства.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="practice-section" id="practice" aria-labelledby="practice-title" data-page="practice">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2 id="practice-title">Практические инструкции</h2>
+        </div>
+
+        <div class="manual-list">
+          <article class="manual-panel searchable" data-title="Как найти нужный арбитражный суд">
+            <div class="manual-head">
+              <span>1</span>
+              <h3>Найти нужный арбитражный суд</h3>
+            </div>
+            <div class="manual-body">
+              <ol class="manual-steps">
+                <li>Откройте <a href="https://arbitr.ru/" target="_blank" rel="noreferrer">arbitr.ru</a>.</li>
+                <li>Выберите раздел судов и субъект РФ по месту жительства гражданина.</li>
+                <li>Проверьте адрес суда, канцелярию, часы приема и реквизиты депозитного счета.</li>
+                <li>В заявлении укажите полное наименование суда. Например, для регистрации в Пермском крае обычно выбирают Арбитражный суд Пермского края.</li>
+              </ol>
+              <div class="screen-card" aria-label="Схема поиска арбитражного суда">
+                <div class="screen-bar"><span></span><span></span><span></span><strong>arbitr.ru</strong></div>
+                <div class="screen-body">
+                  <div class="screen-row active">Суды</div>
+                  <div class="screen-row">Арбитражные суды субъектов РФ</div>
+                  <div class="screen-row">Ваш регион по регистрации</div>
+                  <div class="screen-row result">Название суда, адрес, телефоны, реквизиты</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="manual-panel searchable" data-title="Как подготовить заявление о банкротстве в суд">
+            <div class="manual-head">
+              <span>2</span>
+              <h3>Подготовить заявление в суд</h3>
+            </div>
+            <div class="manual-body">
+              <ol class="manual-steps">
+                <li>В начале заявления укажите суд, ФИО, адрес, дату рождения, СНИЛС, ИНН, телефон и электронную почту.</li>
+                <li>Опишите долги: кредитор, основание долга, сумма основного долга, проценты, штрафы, просрочка.</li>
+                <li>Коротко объясните причину неплатежеспособности: потеря дохода, болезнь, исполнительные производства, превышение обязательств над имуществом.</li>
+                <li>Укажите выбранную СРО арбитражных управляющих и ее адрес. Конкретного управляющего назначит суд из этой СРО.</li>
+                <li>В конце перечислите приложения и подпишите заявление.</li>
+              </ol>
+              <p class="form-inline"><a href="forms/court-bankruptcy-application.docx" download>Скачать форму заявления в суд</a></p>
+              <div class="screen-card document-preview" aria-label="Структура заявления о банкротстве">
+                <div class="paper-line wide"></div>
+                <div class="paper-line"></div>
+                <div class="paper-title">Заявление о признании гражданина банкротом</div>
+                <div class="paper-block">1. Сведения о должнике</div>
+                <div class="paper-block">2. Кредиторы и размер задолженности</div>
+                <div class="paper-block">3. Причины невозможности платить</div>
+                <div class="paper-block">4. Имущество, счета, доходы, сделки</div>
+                <div class="paper-block">5. СРО арбитражных управляющих</div>
+              </div>
+            </div>
+          </article>
+
+          <article class="manual-panel searchable" data-title="Как подать заявление через Мой арбитр">
+            <div class="manual-head">
+              <span>3</span>
+              <h3>Подать через «Мой арбитр»</h3>
+            </div>
+            <div class="manual-body">
+              <ol class="manual-steps">
+                <li>Откройте <a href="https://my.arbitr.ru/" target="_blank" rel="noreferrer">my.arbitr.ru</a> и войдите через подтвержденную учетную запись Госуслуг.</li>
+                <li>Выберите подачу нового заявления, затем арбитражный суд по месту жительства.</li>
+                <li>Заполните данные заявителя и участников, загрузите заявление и приложения в читаемых PDF-файлах.</li>
+                <li>Отправьте документы и сохраните уведомление о поступлении в систему.</li>
+              </ol>
+              <div class="screen-card" aria-label="Схема подачи через Мой арбитр">
+                <div class="screen-bar"><span></span><span></span><span></span><strong>Мой арбитр</strong></div>
+                <div class="screen-body split">
+                  <div class="screen-row active">Войти через Госуслуги</div>
+                  <div class="screen-row">Новое обращение</div>
+                  <div class="screen-row">Заявление о банкротстве</div>
+                  <div class="screen-row">Суд и участники</div>
+                  <div class="screen-row result">Файлы PDF + отправка</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="manual-panel searchable" data-title="Как подать заявление лично или почтой">
+            <div class="manual-head">
+              <span>4</span>
+              <h3>Подать лично или почтой</h3>
+            </div>
+            <div class="manual-body">
+              <ol class="manual-steps">
+                <li>Для личной подачи подготовьте комплект для суда и копию заявления для отметки канцелярии.</li>
+                <li>Для отправки почтой используйте заказное письмо с описью вложения. Опись и чек сохраните.</li>
+                <li>До подачи направьте копии заявления и приложений кредиторам и уполномоченным органам, если у них нет этих документов.</li>
+              </ol>
+              <div class="screen-card mail-preview" aria-label="Что сохранить после отправки почтой">
+                <div class="mail-row"><strong>Конверт</strong><span>адрес суда</span></div>
+                <div class="mail-row"><strong>Опись вложения</strong><span>заявление + приложения</span></div>
+                <div class="mail-row"><strong>Квитанция</strong><span>доказательство отправки</span></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="manual-panel searchable" data-title="Как внести депозит суда 25000 рублей">
+            <div class="manual-head">
+              <span>5</span>
+              <h3>Внести депозит 25 000 руб.</h3>
+            </div>
+            <div class="manual-body">
+              <ol class="manual-steps">
+                <li>Сначала подайте заявление и дождитесь определения суда о принятии заявления: в нем будет номер дела.</li>
+                <li>На сайте нужного арбитражного суда найдите раздел с реквизитами депозитного счета.</li>
+                <li>До заседания по проверке обоснованности заявления внесите 25 000 руб. на депозит суда.</li>
+                <li>В назначении платежа укажите номер дела и что это депозит на выплату вознаграждения финансовому управляющему.</li>
+                <li>Платежный документ сохраните и направьте в суд через «Мой арбитр», канцелярию или почтой.</li>
+              </ol>
+              <div class="screen-card pay-preview" aria-label="Пример реквизитов депозитного платежа">
+                <div class="pay-line"><span>Получатель</span><strong>УФК по региону суда</strong></div>
+                <div class="pay-line"><span>Счет</span><strong>депозитный счет суда</strong></div>
+                <div class="pay-line"><span>Сумма</span><strong>25 000 руб.</strong></div>
+                <div class="pay-line"><span>Назначение</span><strong>дело № ...; вознаграждение финансового управляющего</strong></div>
+              </div>
+            </div>
+          </article>
+
+          <article class="manual-panel searchable" data-title="Как найти финансового управляющего и СРО">
+            <div class="manual-head">
+              <span>6</span>
+              <h3>Найти СРО управляющих</h3>
+            </div>
+            <div class="manual-body">
+              <ol class="manual-steps">
+                <li>Откройте <a href="https://bankrot.fedresurs.ru/" target="_blank" rel="noreferrer">ЕФРСБ</a> и найдите раздел со сведениями об арбитражных управляющих и СРО.</li>
+                <li>Выберите СРО, проверьте ее адрес и контакты, уточните готовность представить кандидатуру по делу гражданина.</li>
+                <li>В заявлении в суд укажите не «любого управляющего», а конкретную саморегулируемую организацию.</li>
+              </ol>
+              <div class="screen-card" aria-label="Схема поиска СРО на Федресурсе">
+                <div class="screen-bar"><span></span><span></span><span></span><strong>Федресурс</strong></div>
+                <div class="screen-body">
+                  <div class="screen-row active">Реестры</div>
+                  <div class="screen-row">Арбитражные управляющие</div>
+                  <div class="screen-row">Саморегулируемые организации</div>
+                  <div class="screen-row result">Название СРО, адрес, контакты</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="manual-panel searchable" data-title="Как подать заявление во внесудебном порядке через МФЦ">
+            <div class="manual-head">
+              <span>7</span>
+              <h3>Подать через МФЦ</h3>
+            </div>
+            <div class="manual-body">
+              <ol class="manual-steps">
+                <li>Обратитесь в МФЦ по месту жительства или пребывания.</li>
+                <li>Заполните заявление по форме Минэкономразвития и список всех известных кредиторов.</li>
+                <li>Для пенсионера, получателя пособия, участника СВО или основания «7 лет» приложите нужные справки. Такие справки должны быть выданы не ранее чем за 3 месяца до обращения.</li>
+                <li>После принятия заявления проверяйте публикацию в ЕФРСБ. Сама процедура длится 6 месяцев.</li>
+              </ol>
+              <p class="form-inline"><a href="forms/mfc-extrajudicial-bankruptcy-application.docx" download>Скачать форму заявления в МФЦ</a></p>
+              <div class="screen-card" aria-label="Схема подачи через МФЦ">
+                <div class="screen-bar"><span></span><span></span><span></span><strong>МФЦ</strong></div>
+                <div class="screen-body">
+                  <div class="screen-row active">Запись или личный прием</div>
+                  <div class="screen-row">Заявление + список кредиторов</div>
+                  <div class="screen-row">Справки по основанию</div>
+                  <div class="screen-row result">Публикация в ЕФРСБ, 6 месяцев</div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="source-table searchable" data-title="Где получить документы для банкротства гражданина">
+          <h3>Где получить документы</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Документ</th>
+                <th>Где взять</th>
+                <th>На что обратить внимание</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Список кредиторов и должников</td>
+                <td>Форма из приказа Минэкономразвития № 530</td>
+                <td>Указывать всех известных кредиторов: банки, МФО, налоги, ЖКУ, расписки, судебные долги.</td>
+              </tr>
+              <tr>
+                <td>Опись имущества</td>
+                <td>Форма из приказа Минэкономразвития № 530</td>
+                <td>Отдельно отмечаются залог, совместное имущество, транспорт, счета, доли, ценные бумаги.</td>
+              </tr>
+              <tr>
+                <td>Долги и просрочки</td>
+                <td>Банки, МФО, ФССП, Госуслуги, судебные акты, договоры</td>
+                <td>Нужны суммы, основания долга, даты просрочки и исполнительные документы, если они есть.</td>
+              </tr>
+              <tr>
+                <td>Отсутствие статуса ИП</td>
+                <td>ФНС: сведения из ЕГРИП</td>
+                <td>Для суда подтверждение берут не ранее чем за 5 рабочих дней до подачи.</td>
+              </tr>
+              <tr>
+                <td>Доходы за 3 года</td>
+                <td>Личный кабинет ФНС, работодатель, Социальный фонд</td>
+                <td>Подойдут сведения о доходах, удержанном налоге, пенсиях, пособиях.</td>
+              </tr>
+              <tr>
+                <td>Состояние индивидуального лицевого счета</td>
+                <td>Госуслуги или Социальный фонд России</td>
+                <td>Обычно прикладывают вместе со СНИЛС.</td>
+              </tr>
+              <tr>
+                <td>Банковские счета, электронные деньги и цифровые рубли</td>
+                <td>Банки и личный кабинет ФНС для списка счетов</td>
+                <td>Суду важны открытые и закрытые счета, остатки и движение средств за 3 года, а также сведения о цифровых рублях при наличии.</td>
+              </tr>
+              <tr>
+                <td>Недвижимость и транспорт</td>
+                <td>ЕГРН через Госуслуги или Росреестр, ГИБДД, документы на ТС</td>
+                <td>Нужно показать имущество, даже если оно единственное или находится в залоге.</td>
+              </tr>
+              <tr>
+                <td>Сделки за 3 года</td>
+                <td>Договоры купли-продажи, дарения, акты передачи, банковские выписки</td>
+                <td>Особенно важны недвижимость, транспорт, доли, ценные бумаги и сделки дороже 300 000 руб.</td>
+              </tr>
+              <tr>
+                <td>Безработица</td>
+                <td>Служба занятости, портал «Работа России»</td>
+                <td>Прикладывается, если потеря работы объясняет невозможность платить.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="documents-section" id="documents" aria-labelledby="documents-title" data-page="documents">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2 id="documents-title">Документы, которые нужно подготовить</h2>
+        </div>
+
+        <div class="forms-download searchable" data-title="Скачать формы заявлений и приложений">
+          <h3>Формы для скачивания</h3>
+          <div class="forms-help">
+            <p><strong>Если идете в суд:</strong> скачайте заявление в арбитражный суд, список кредиторов и опись имущества.</p>
+            <p><strong>Если идете в МФЦ:</strong> скачайте заявление в МФЦ и список кредиторов. Опись имущества обычно нужна для суда, но может помочь проверить сведения.</p>
+          </div>
+          <div class="forms-grid">
+            <a class="form-link primary" href="forms/court-bankruptcy-application.docx" download>
+              <strong>Заявление в арбитражный суд</strong>
+              <span>DOCX, шаблон для судебного банкротства</span>
+            </a>
+            <a class="form-link primary" href="forms/mfc-extrajudicial-bankruptcy-application.docx" download>
+              <strong>Заявление в МФЦ</strong>
+              <span>DOCX, внесудебное банкротство</span>
+            </a>
+            <a class="form-link" href="forms/creditors-and-debtors-list.docx" download>
+              <strong>Список кредиторов и должников</strong>
+              <span>DOCX, приложение к заявлению</span>
+            </a>
+            <a class="form-link" href="forms/property-inventory.docx" download>
+              <strong>Опись имущества</strong>
+              <span>DOCX, приложение к заявлению</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="document-toolbar">
+          <button class="utility-button" type="button" id="print-page">Печать</button>
+          <button class="utility-button" type="button" id="download-checklist">Скачать чек-лист</button>
+          <button class="utility-button danger" type="button" id="reset-checklists">Сбросить отметки</button>
+        </div>
+
+        <div class="checklist-grid">
+          <article class="checklist-card searchable" data-title="Обязательные документы для суда">
+            <div class="checklist-heading">
+              <h3>Для судебного банкротства</h3>
+              <span class="progress-pill" data-progress-for="court-docs">0%</span>
+            </div>
+            <ul class="checklist" data-list="court-docs">
+              <li><label><input type="checkbox" data-id="court-application"> Заявление о признании гражданина банкротом с указанием суда, кредиторов, причин неплатежеспособности и выбранной СРО</label></li>
+              <li><label><input type="checkbox" data-id="passport"> Паспорт гражданина РФ, копии заполненных страниц</label></li>
+              <li><label><input type="checkbox" data-id="snils"> СНИЛС и сведения о состоянии индивидуального лицевого счета</label></li>
+              <li><label><input type="checkbox" data-id="inn"> ИНН или свидетельство о постановке на учет</label></li>
+              <li><label><input type="checkbox" data-id="no-ip"> Подтверждение отсутствия статуса ИП, полученное не ранее чем за 5 рабочих дней до подачи</label></li>
+              <li><label><input type="checkbox" data-id="creditors"> Список кредиторов и должников по форме приказа Минэкономразвития № 530</label></li>
+              <li><label><input type="checkbox" data-id="inventory"> Опись имущества по форме приказа Минэкономразвития № 530, включая залоговое имущество</label></li>
+              <li><label><input type="checkbox" data-id="debt-proof"> Договоры, решения судов, исполнительные документы, справки о задолженности</label></li>
+              <li><label><input type="checkbox" data-id="income"> Сведения о доходах и удержанных налогах за 3 года</label></li>
+              <li><label><input type="checkbox" data-id="bank"> Справки о счетах, вкладах, электронных денежных средствах, цифровых рублях при наличии, остатках и движении средств за 3 года</label></li>
+              <li><label><input type="checkbox" data-id="transactions"> Документы по сделкам с имуществом за 3 года, если они были</label></li>
+              <li><label><input type="checkbox" data-id="court-deposit"> Готовность внести 25 000 руб. на депозит суда после принятия заявления; платежный документ направляется после появления номера дела</label></li>
+              <li><label><input type="checkbox" data-id="mail-proof"> Почтовые квитанции или иные подтверждения направления копий кредиторам</label></li>
+            </ul>
+          </article>
+
+          <article class="checklist-card searchable" data-title="Факультативные документы для суда">
+            <div class="checklist-heading">
+              <h3>По ситуации</h3>
+              <span class="progress-pill" data-progress-for="optional-docs">0%</span>
+            </div>
+            <ul class="checklist" data-list="optional-docs">
+              <li><label><input type="checkbox" data-id="marriage"> Свидетельство о браке, разводе, брачный договор или соглашение о разделе имущества</label></li>
+              <li><label><input type="checkbox" data-id="children"> Свидетельства о рождении детей, документы об алиментах</label></li>
+              <li><label><input type="checkbox" data-id="jobless"> Решение службы занятости о признании безработным, если применимо</label></li>
+              <li><label><input type="checkbox" data-id="property"> Выписки ЕГРН, ПТС, сведения о долях в компаниях, реестр акционеров</label></li>
+              <li><label><input type="checkbox" data-id="health"> Документы о болезни, инвалидности или иных причинах резкого снижения дохода</label></li>
+              <li><label><input type="checkbox" data-id="dependents"> Документы о иждивенцах и обязательных расходах семьи</label></li>
+            </ul>
+          </article>
+
+          <article class="checklist-card searchable" data-title="Документы для внесудебного банкротства МФЦ">
+            <div class="checklist-heading">
+              <h3>Для МФЦ</h3>
+              <span class="progress-pill" data-progress-for="mfc-docs">0%</span>
+            </div>
+            <ul class="checklist" data-list="mfc-docs">
+              <li><label><input type="checkbox" data-id="mfc-passport"> Паспорт и подтверждение регистрации по месту жительства или пребывания</label></li>
+              <li><label><input type="checkbox" data-id="mfc-snils-inn"> СНИЛС и ИНН, если их запросят при приеме заявления</label></li>
+              <li><label><input type="checkbox" data-id="mfc-application"> Заявление о признании гражданина банкротом во внесудебном порядке</label></li>
+              <li><label><input type="checkbox" data-id="mfc-creditors"> Список всех известных кредиторов и должников по форме</label></li>
+              <li><label><input type="checkbox" data-id="mfc-fssp"> Сведения об исполнительных производствах или справка по выбранному основанию</label></li>
+              <li><label><input type="checkbox" data-id="mfc-pension"> Для пенсионера - справка о пенсии и справка об исполнительном документе, выданные не ранее чем за 3 месяца до обращения</label></li>
+              <li><label><input type="checkbox" data-id="mfc-benefit"> Для получателя пособия - справка о пособии и справка об исполнительном документе, выданные не ранее чем за 3 месяца до обращения</label></li>
+              <li><label><input type="checkbox" data-id="mfc-svo"> Для участника СВО - справка об участии и справка об исполнительном документе, если обращение идет по этому основанию</label></li>
+              <li><label><input type="checkbox" data-id="mfc-old-exec"> Для основания «7 лет» - справка об исполнительном документе, выданная не ранее чем за 3 месяца до обращения</label></li>
+              <li><label><input type="checkbox" data-id="mfc-proxy"> Если подает представитель - доверенность и паспорт представителя</label></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="consequences-section" id="consequences" aria-labelledby="consequences-title" data-page="consequences">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2 id="consequences-title">Что изменится после банкротства</h2>
+        </div>
+        <div class="risk-grid">
+          <article class="risk-card searchable" data-title="Кредиты после банкротства">
+            <h3>Кредиты и займы</h3>
+            <p>В течение 5 лет при обращении за кредитом или займом нужно сообщать о факте банкротства.</p>
+          </article>
+          <article class="risk-card searchable" data-title="Повторное банкротство">
+            <h3>Повторная процедура</h3>
+            <p>В течение 5 лет после завершения процедуры новое дело не может быть возбуждено по заявлению самого гражданина. Если в этот срок дело инициирует кредитор или уполномоченный орган, списание долгов может не применяться.</p>
+          </article>
+          <article class="risk-card searchable" data-title="Руководящие должности после банкротства">
+            <h3>Руководящие должности</h3>
+            <p>Есть ограничения на участие в управлении организациями: 3 года для обычных юридических лиц, 5 лет для ряда финансовых организаций, 10 лет для кредитных организаций.</p>
+          </article>
+          <article class="risk-card searchable" data-title="Сделки и добросовестность">
+            <h3>Добросовестность</h3>
+            <p>Если гражданин скрывает имущество, искажает сведения или не сотрудничает с судом и управляющим, суд может не освободить его от обязательств.</p>
+          </article>
+        </div>
+
+        <div class="not-dischargeable searchable" data-title="Какие долги не списываются">
+          <h3>Какие требования обычно не списываются</h3>
+          <ul class="tag-list">
+            <li>алименты</li>
+            <li>вред жизни или здоровью</li>
+            <li>моральный вред</li>
+            <li>текущие платежи</li>
+            <li>зарплата и выходные пособия</li>
+            <li>неуказанные в заявлении МФЦ требования</li>
+            <li>отдельные личные требования кредиторов</li>
+            <li>субсидиарная ответственность и убытки в случаях, установленных законом</li>
+          </ul>
+        </div>
+
+        <div class="accordion-guide">
+          <details class="action-step searchable" data-title="Когда суд может не освободить от долгов">
+            <summary><span>1</span><strong>Когда списание долгов могут не применить</strong></summary>
+            <div class="step-content">
+              <ul class="plain-list">
+                <li>если гражданина привлекли к уголовной или административной ответственности за неправомерные действия при банкротстве, преднамеренное или фиктивное банкротство;</li>
+                <li>если суду или финансовому управляющему не передали нужные сведения либо передали заведомо недостоверные сведения;</li>
+                <li>если долг возник из-за мошенничества, злостного уклонения от погашения, уклонения от налогов или предоставления кредитору заведомо ложных сведений;</li>
+                <li>если гражданин скрывал или умышленно уничтожал имущество.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="action-step searchable" data-title="Какие долги сохраняются после процедуры">
+            <summary><span>2</span><strong>Какие долги сохраняются после процедуры</strong></summary>
+            <div class="step-content">
+              <ul class="plain-list">
+                <li>текущие платежи, возникшие уже после возбуждения дела;</li>
+                <li>требования о возмещении вреда жизни или здоровью, морального вреда, алименты;</li>
+                <li>зарплата и выходные пособия работникам, если такие требования есть;</li>
+                <li>личные требования, неразрывно связанные с кредитором, и требования кредиторов, о которых они не знали и не должны были знать к завершению процедуры;</li>
+                <li>отдельные требования о субсидиарной ответственности, убытках, последствиях недействительных сделок и вреде имуществу при умысле или грубой неосторожности.</li>
+              </ul>
+            </div>
+          </details>
+
+          <details class="action-step searchable" data-title="Какое имущество обычно не забирают">
+            <summary><span>3</span><strong>Какое имущество обычно не забирают</strong></summary>
+            <div class="step-content">
+              <p>По общему правилу взыскание не обращается на имущество из статьи 446 ГПК РФ. В конкретном деле важно проверять залог, ипотеку, доли, сделки и стоимость имущества.</p>
+              <ul class="plain-list">
+                <li>единственное пригодное для проживания жилье и земельный участок под ним, если это не ипотечный залог;</li>
+                <li>обычные предметы домашней обстановки и личные вещи, кроме предметов роскоши;</li>
+                <li>продукты и деньги в пределах установленного минимума для гражданина и иждивенцев;</li>
+                <li>имущество, необходимое для профессиональных занятий, в пределах установленной законом стоимости;</li>
+                <li>имущество, необходимое гражданину в связи с инвалидностью, и государственные награды;</li>
+                <li>единственное транспортное средство члена многодетной семьи-должника, если применяются условия закона.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="contacts-section" id="contacts" aria-labelledby="contacts-title" data-page="contacts">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2 id="contacts-title">Полезные официальные сервисы</h2>
+        </div>
+        <div class="link-grid">
+          <a class="service-link searchable" data-title="Арбитражные суды" href="https://arbitr.ru/" target="_blank" rel="noreferrer">
+            <strong>Арбитражные суды</strong>
+            <span>поиск суда, реквизиты, справочная информация</span>
+          </a>
+          <a class="service-link searchable" data-title="Мой арбитр" href="https://my.arbitr.ru/" target="_blank" rel="noreferrer">
+            <strong>Мой арбитр</strong>
+            <span>электронная подача документов в арбитражные суды</span>
+          </a>
+          <a class="service-link searchable" data-title="Картотека арбитражных дел" href="https://kad.arbitr.ru/" target="_blank" rel="noreferrer">
+            <strong>Картотека арбитражных дел</strong>
+            <span>отслеживание судебных актов и заседаний</span>
+          </a>
+          <a class="service-link searchable" data-title="ЕФРСБ Федресурс" href="https://bankrot.fedresurs.ru/" target="_blank" rel="noreferrer">
+            <strong>ЕФРСБ</strong>
+            <span>реестр сведений о банкротстве</span>
+          </a>
+          <a class="service-link searchable" data-title="ФССП банк данных исполнительных производств" href="https://fssp.gov.ru/" target="_blank" rel="noreferrer">
+            <strong>ФССП</strong>
+            <span>проверка исполнительных производств</span>
+          </a>
+          <a class="service-link searchable" data-title="МФЦ Мои документы" href="https://моидокументы.рф/" target="_blank" rel="noreferrer">
+            <strong>МФЦ «Мои документы»</strong>
+            <span>адреса центров для подачи внесудебного заявления</span>
+          </a>
+          <a class="service-link searchable" data-title="МФЦ Пермского края адреса филиалов" href="https://mfc.permkrai.ru/informatsiya-o-filialakh/filialy-mfts/" target="_blank" rel="noreferrer">
+            <strong>МФЦ Пермского края</strong>
+            <span>адреса филиалов, график работы и запись на прием</span>
+          </a>
+          <a class="service-link searchable" data-title="ФНС банкротство гражданина" href="https://www.nalog.gov.ru/rn77/fl/interest/bankruptcyfl/" target="_blank" rel="noreferrer">
+            <strong>ФНС</strong>
+            <span>официальная справка о банкротстве гражданина</span>
+          </a>
+          <a class="service-link searchable" data-title="Официальный портал правовой информации" href="https://pravo.gov.ru/" target="_blank" rel="noreferrer">
+            <strong>Официальный портал правовой информации</strong>
+            <span>проверка действующей редакции нормативных актов</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="faq-section" aria-labelledby="faq-title" data-page="contacts">
+      <div class="section-inner">
+        <div class="section-heading">
+          <h2 id="faq-title">Короткие ответы</h2>
+        </div>
+        <div class="faq-list">
+          <details class="searchable" data-title="Когда нужен суд если есть МФЦ">
+            <summary>Зачем идти в суд, если через МФЦ можно с долгом от 25 000 руб.?</summary>
+            <p>МФЦ подходит не всем: кроме суммы долга от 25 000 до 1 000 000 руб. нужно специальное основание, например оконченное исполнительное производство или предусмотренная законом социальная категория. Если такого основания нет, есть спорные долги, имущество, залог, сделки за последние годы или нужна проверка судом, рассматривают судебный порядок. В суд можно обратиться и при долге меньше 500 000 руб., если банкротство уже очевидно.</p>
+          </details>
+          <details class="searchable" data-title="Нужно ли платить госпошлину должнику">
+            <summary>Нужно ли должнику платить госпошлину за собственное банкротство?</summary>
+            <p>По действующей редакции НК РФ при обращении должника с заявлением о признании его банкротом госпошлина не взимается. Но судебный депозит на финансового управляющего сохраняется: 25 000 руб. вносят после принятия заявления судом и появления номера дела.</p>
+          </details>
+          <details class="searchable" data-title="Какие долги не спишут">
+            <summary>Все ли долги спишут?</summary>
+            <p>Нет. Не списываются, например, алименты, вред жизни или здоровью, моральный вред, часть текущих платежей и требования, которые закон прямо исключает. При внесудебной процедуре особенно важно указать всех кредиторов в заявлении.</p>
+          </details>
+          <details class="searchable" data-title="Что будет с единственным жильем">
+            <summary>Что будет с единственным жильем?</summary>
+            <p>Общее правило защищает единственное пригодное для проживания жилье, если оно не является предметом ипотеки. Но в сложных ситуациях с залогом, роскошным жильем, сделками и долями нужна отдельная правовая проверка.</p>
+          </details>
+          <details class="searchable" data-title="Можно ли обойтись без юриста">
+            <summary>Можно ли пройти процедуру самостоятельно?</summary>
+            <p>Внесудебная процедура через МФЦ рассчитана на самостоятельное обращение. Судебное банкротство тоже можно инициировать самостоятельно, но там выше риск ошибок в заявлении, списках кредиторов, документах, выборе СРО и оценке последствий.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="section-inner footer-inner">
+      <p>Пошаговые рекомендации по банкротству гражданина</p>
+      <a href="#route">Наверх</a>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
