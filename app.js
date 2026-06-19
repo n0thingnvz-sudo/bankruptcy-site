@@ -152,6 +152,8 @@ const courtCheckForm = document.querySelector('#court-check-form');
 const courtCheckResult = document.querySelector('#court-check-result');
 const mfcCheckForm = document.querySelector('#mfc-check-form');
 const mfcCheckResult = document.querySelector('#mfc-check-result');
+const mfcInstructionPanels = [...document.querySelectorAll('[data-mfc-info]')];
+const mfcProofSets = [...document.querySelectorAll('[data-mfc-proof]')];
 
 function updateCourtCheck() {
   if (!courtCheckForm || !courtCheckResult) return;
@@ -198,12 +200,32 @@ function updateCourtCheck() {
   courtCheckResult.innerHTML = '<strong>Пока признаков мало.</strong><br>Если платежи посильны и нет очевидной невозможности платить, банкротство может быть преждевременным.';
 }
 
+function updateMfcInstructions(ground) {
+  if (!mfcInstructionPanels.length) return;
+
+  const activeGround = ground || 'none';
+  mfcInstructionPanels.forEach((panel) => {
+    panel.hidden = panel.dataset.mfcInfo !== activeGround;
+  });
+}
+
+function updateMfcProofSets(ground) {
+  if (!mfcProofSets.length) return;
+
+  const activeProof = ['pension', 'benefit', 'svo'].includes(ground) ? 'social' : (ground || 'none');
+  mfcProofSets.forEach((set) => {
+    set.hidden = set.dataset.mfcProof !== activeProof;
+  });
+}
+
 function updateMfcCheck() {
   if (!mfcCheckForm || !mfcCheckResult) return;
 
   const data = new FormData(mfcCheckForm);
   const debt = Number(data.get('mfcDebt')) || 0;
   const ground = data.get('mfcGround');
+  updateMfcInstructions(ground);
+  updateMfcProofSets(ground);
   const recentBankruptcy = data.get('mfcRecentBankruptcy') === 'on';
   const inRange = debt >= 25000 && debt <= 1000000;
   const checked = (name) => data.get(name) === 'on';
