@@ -1986,42 +1986,49 @@ body {
   font-weight: 800;
 }
 
-.mfc-check-layout {
+.split-check-layout {
   display: grid;
   grid-template-columns: minmax(280px, .9fr) minmax(360px, 1.1fr);
   gap: 12px;
   align-items: start;
 }
 
-.mfc-amount-card,
-.mfc-choice-group,
-.mfc-proof-group {
+.amount-card,
+.check-column {
   min-width: 0;
+  min-inline-size: 0;
+  align-self: start;
   border: 1px solid var(--line);
   border-radius: var(--radius);
   background: #fffdf8;
 }
 
-.mfc-amount-card {
+.amount-card {
   display: grid;
   gap: 8px;
   padding: 14px;
 }
 
-.mfc-amount-card span,
-.mfc-choice-group legend,
-.mfc-proof-group legend {
+.amount-card span,
+.check-column h4,
+.check-column legend {
   font-weight: 900;
 }
 
-.mfc-choice-group,
-.mfc-proof-group {
+.check-column {
+  display: grid;
+  align-content: start;
+  gap: 10px;
   margin: 0;
   padding: 14px;
 }
 
-.mfc-choice-group legend,
-.mfc-proof-group legend {
+.check-column h4 {
+  margin: 0;
+  font-size: 1rem;
+}
+
+.check-column legend {
   padding: 0 6px;
 }
 
@@ -2032,7 +2039,8 @@ body {
 
 .mfc-radio-list,
 .mfc-proof-set,
-.mfc-common-checks {
+.mfc-common-checks,
+.common-checks {
   display: grid;
   gap: 8px;
 }
@@ -2041,9 +2049,12 @@ body {
   display: none;
 }
 
+.check-column label:has(input[type="checkbox"]),
+.check-column label:has(input[type="radio"]),
 .mfc-radio-list label,
 .mfc-proof-set label,
-.mfc-common-checks label {
+.mfc-common-checks label,
+.common-checks label {
   display: grid;
   grid-template-columns: 20px minmax(0, 1fr);
   gap: 10px;
@@ -2063,16 +2074,20 @@ body {
 
 .mfc-radio-list input,
 .mfc-proof-set input,
-.mfc-common-checks input {
+.mfc-common-checks input,
+.check-column input[type="checkbox"],
+.check-column input[type="radio"] {
   margin-top: 2px;
 }
 
+.check-hint,
 .mfc-proof-hint {
   margin: 0 0 10px;
   color: var(--muted);
 }
 
-.mfc-common-checks {
+.mfc-common-checks,
+.common-checks {
   margin-top: 10px;
   padding-top: 10px;
   border-top: 1px solid var(--line);
@@ -2372,7 +2387,7 @@ body {
     max-width: 620px;
   }
 
-  .mfc-check-layout {
+  .split-check-layout {
     grid-template-columns: 1fr;
   }
 

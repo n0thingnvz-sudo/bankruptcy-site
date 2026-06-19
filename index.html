@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Банкротство гражданина - пошаговые рекомендации</title>
   <meta name="description" content="Пошаговые рекомендации по судебному и внесудебному банкротству гражданина в России.">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260619-3">
 </head>
 <body>
   <a class="skip-link" href="#main">Перейти к содержанию</a>
@@ -175,19 +175,29 @@
             <h3>Сначала проверьте, нужен ли суд</h3>
             <p>Ответьте на простые вопросы. Это не заменяет решение суда, но помогает понять, есть ли смысл готовить судебное заявление.</p>
           </div>
-          <div class="eligibility-grid">
-            <label>
-              <span>Сумма всех долгов, руб.</span>
-              <input class="amount-input" name="courtDebt" type="number" inputmode="numeric" min="0" step="1000" value="500000">
-            </label>
-            <label><input type="checkbox" name="courtCannotPay" checked> Денег не хватает, чтобы платить по графику</label>
-            <label><input type="checkbox" name="courtOneCreditorBlocks"> Если платить одному кредитору, не останется денег на других</label>
-            <label><input type="checkbox" name="courtStoppedPayments"> Уже прекратили платить по наступившим долгам</label>
-            <label><input type="checkbox" name="courtTenPercent"> Больше 10% наступивших долгов не платится дольше месяца</label>
-            <label><input type="checkbox" name="courtPropertyShortage"> Имущества меньше, чем долгов</label>
-            <label><input type="checkbox" name="courtNoPropertyEnforcement"> Есть окончание исполнительного производства из-за отсутствия имущества</label>
-            <label><input type="checkbox" name="courtSoonMoney"> Ожидается поступление денег, которого хватит закрыть наступившие долги</label>
-            <label><input type="checkbox" name="courtRecentBankruptcy"> Банкротство уже завершалось менее 5 лет назад</label>
+          <div class="split-check-layout court-check-layout">
+            <section class="check-column primary-checks" aria-labelledby="court-duty-title">
+              <h4 id="court-duty-title">Сумма и обязанность обратиться</h4>
+              <label class="amount-card">
+                <span>Сумма всех долгов, руб.</span>
+                <input class="amount-input" name="courtDebt" type="number" inputmode="numeric" min="0" step="1000" value="500000">
+              </label>
+              <label><input type="checkbox" name="courtCannotPay" checked> Денег не хватает, чтобы платить по графику</label>
+              <label><input type="checkbox" name="courtOneCreditorBlocks"> Если платить одному кредитору, не останется денег на других</label>
+            </section>
+
+            <section class="check-column secondary-checks" aria-labelledby="court-signs-title">
+              <h4 id="court-signs-title">Признаки неплатежеспособности</h4>
+              <p class="check-hint">Отметьте то, что реально подтверждается документами: выписками, постановлениями приставов, справками о доходах и сведениями об имуществе.</p>
+              <label><input type="checkbox" name="courtStoppedPayments"> Уже прекратили платить по наступившим долгам</label>
+              <label><input type="checkbox" name="courtTenPercent"> Больше 10% наступивших долгов не платится дольше месяца</label>
+              <label><input type="checkbox" name="courtPropertyShortage"> Имущества меньше, чем долгов</label>
+              <label><input type="checkbox" name="courtNoPropertyEnforcement"> Есть окончание исполнительного производства из-за отсутствия имущества</label>
+              <div class="common-checks">
+                <label><input type="checkbox" name="courtSoonMoney"> Ожидается поступление денег, которого хватит закрыть наступившие долги</label>
+                <label><input type="checkbox" name="courtRecentBankruptcy"> Банкротство уже завершалось менее 5 лет назад</label>
+              </div>
+            </section>
           </div>
           <output class="eligibility-result" id="court-check-result">Заполните условия - вывод появится здесь.</output>
           <div class="action-row">
@@ -319,13 +329,13 @@
             <h3>Проверьте, можно ли через МФЦ</h3>
             <p>МФЦ подходит не всем. Выберите сумму долга и основание - сайт сразу покажет предварительный вывод.</p>
           </div>
-          <div class="mfc-check-layout">
-            <label class="mfc-amount-card">
+          <div class="split-check-layout mfc-check-layout">
+            <label class="amount-card mfc-amount-card">
               <span>Сумма всех долгов, руб.</span>
               <input class="amount-input" name="mfcDebt" type="number" inputmode="numeric" min="0" step="1000" value="500000">
             </label>
 
-            <fieldset class="mfc-choice-group">
+            <fieldset class="check-column mfc-choice-group">
               <legend>Основание для обращения</legend>
               <div class="mfc-radio-list">
                 <label><input type="radio" name="mfcGround" value="closed" checked> Для любых граждан с оконченным исполнительным производством</label>
@@ -337,7 +347,7 @@
               </div>
             </fieldset>
 
-            <fieldset class="mfc-proof-group">
+            <fieldset class="check-column mfc-proof-group">
               <legend>Что нужно подтвердить</legend>
               <p class="mfc-proof-hint">После выбора основания здесь остаются только относящиеся к нему условия.</p>
 
@@ -1090,6 +1100,6 @@
     </div>
   </footer>
 
-  <script src="app.js"></script>
+  <script src="app.js?v=20260619-3"></script>
 </body>
 </html>
