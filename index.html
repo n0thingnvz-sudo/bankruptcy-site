@@ -89,8 +89,8 @@
             <label><input type="checkbox" name="pensioner"> Основной доход - пенсия</label>
             <label><input type="checkbox" name="childBenefit"> Получаю ежемесячное пособие на ребенка</label>
             <label><input type="checkbox" name="svo"> Принимаю или принимал участие в СВО</label>
-            <label><input type="checkbox" name="execOver1"> Исполнительный документ выдан не позднее чем за 1 год до обращения и предъявлялся к исполнению</label>
-            <label><input type="checkbox" name="execOver7"> Исполнительный документ выдан не позднее чем за 7 лет до обращения и предъявлялся к исполнению</label>
+            <label><input type="checkbox" name="execOver1"> Исполнительному документу уже 1 год или больше, он предъявлялся к исполнению</label>
+            <label><input type="checkbox" name="execOver7"> Исполнительному документу уже 7 лет или больше, он предъявлялся к исполнению</label>
             <label><input type="checkbox" name="noProperty"> Нет имущества, на которое можно обратить взыскание</label>
             <label><input type="checkbox" name="recentBankruptcy"> Уже проходил банкротство менее 5 лет назад</label>
           </div>
@@ -324,12 +324,20 @@
               <span>Сумма всех долгов, руб.</span>
               <input class="amount-input" name="mfcDebt" type="number" inputmode="numeric" min="0" step="1000" value="500000">
             </label>
-            <label><input type="radio" name="mfcGround" value="closed" checked> Пристав окончил производство по п. 4 ч. 1 ст. 46, новых производств нет</label>
-            <label><input type="radio" name="mfcGround" value="pension"> Основной доход - пенсия, есть нужный исполнительный документ, имущества для взыскания нет</label>
-            <label><input type="radio" name="mfcGround" value="benefit"> Получаю ежемесячное пособие на ребенка, есть нужный исполнительный документ, имущества для взыскания нет</label>
-            <label><input type="radio" name="mfcGround" value="svo"> Принимаю или принимал участие в СВО, есть нужный исполнительный документ, имущества для взыскания нет</label>
-            <label><input type="radio" name="mfcGround" value="old"> Исполнительный документ выдан не позднее чем за 7 лет до обращения и не исполнен полностью</label>
+            <label><input type="radio" name="mfcGround" value="closed" checked> Основание 1: пристав вернул исполнительный документ из-за невозможности взыскания</label>
+            <label><input type="radio" name="mfcGround" value="pension"> Основание 2: основной доход - пенсия</label>
+            <label><input type="radio" name="mfcGround" value="benefit"> Основание 3: ежемесячное пособие на ребенка</label>
+            <label><input type="radio" name="mfcGround" value="svo"> Основание 4: участие в СВО</label>
+            <label><input type="radio" name="mfcGround" value="old"> Основание 5: исполнительному документу уже 7 лет или больше</label>
             <label><input type="radio" name="mfcGround" value="none"> Ничего из этого не подходит</label>
+            <label><input type="checkbox" name="mfcReturned46"> Есть возврат исполнительного документа по п. 4 ч. 1 ст. 46 Закона № 229-ФЗ</label>
+            <label><input type="checkbox" name="mfcNoOpenAfterReturn"> После возврата нет новых неоконченных или непрекращенных исполнительных производств</label>
+            <label><input type="checkbox" name="mfcExecOver1"> Для пенсии, пособия или СВО: исполнительному документу уже 1 год или больше, он предъявлялся к исполнению и не исполнен полностью</label>
+            <label><input type="checkbox" name="mfcNoPropertySocial"> Для пенсии, пособия или СВО: нет имущества, на которое можно обратить взыскание</label>
+            <label><input type="checkbox" name="mfcSocialDocs"> Для пенсии, пособия или СВО: есть нужные справки либо сведения могут быть получены межведомственно</label>
+            <label><input type="checkbox" name="mfcExecOver7"> Для основания «7 лет»: исполнительному документу уже 7 лет или больше, он предъявлялся к исполнению и не исполнен полностью</label>
+            <label><input type="checkbox" name="mfcOldDocs"> Для основания «7 лет»: есть справка по установленной форме либо сведения могут быть получены межведомственно</label>
+            <label><input type="checkbox" name="mfcCreditorsReady" checked> В список внесены все известные кредиторы</label>
             <label><input type="checkbox" name="mfcRecentBankruptcy"> Банкротство уже завершалось менее 5 лет назад</label>
           </div>
           <output class="eligibility-result" id="mfc-check-result">Выберите основание - вывод появится здесь.</output>
@@ -356,9 +364,9 @@
             <summary><span>2</span><strong>Выбрать свое основание</strong></summary>
             <div class="step-content">
               <ul class="plain-list">
-                <li><strong>Оконченное исполнительное производство:</strong> пристав вернул исполнительный документ из-за невозможности взыскания, и новых открытых производств нет.</li>
-                <li><strong>Пенсия, пособие или СВО:</strong> нужен исполнительный документ, выданный не позднее чем за 1 год до обращения, предъявленный к исполнению и не исполненный полностью; имущества для взыскания нет.</li>
-                <li><strong>Семь лет:</strong> исполнительный документ выдан не позднее чем за 7 лет до обращения, предъявлялся к исполнению и не исполнен полностью.</li>
+                <li><strong>Оконченное исполнительное производство:</strong> пристав вернул исполнительный документ по п. 4 ч. 1 ст. 46 Закона № 229-ФЗ из-за отсутствия имущества для взыскания, и после возврата нет новых неоконченных или непрекращенных производств.</li>
+                <li><strong>Пенсия, пособие или СВО:</strong> закрытие всех производств по п. 4 ст. 46 не требуется, но нужен исполнительный документ, которому уже 1 год или больше, он предъявлялся к исполнению и не исполнен полностью; имущества для взыскания нет; нужны справки или межведомственные сведения.</li>
+                <li><strong>Семь лет:</strong> нужен исполнительный документ, которому уже 7 лет или больше, он предъявлялся к исполнению и не исполнен полностью; также нужна справка или межведомственные сведения.</li>
               </ul>
             </div>
           </details>

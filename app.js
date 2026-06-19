@@ -114,7 +114,7 @@ function updateRoute() {
 
   const recentBankruptcy = checked('recentBankruptcy');
   const courtDuty = debt >= 500000 && checked('cannotPay') && checked('oneCreditorBlocks');
-  const courtPossible = checked('cannotPay') || debt >= 500000 || checked('overdue3');
+  const courtPossible = checked('cannotPay') || checked('overdue3');
 
   routeResult.classList.remove('warning', 'alert');
 
@@ -188,7 +188,7 @@ function updateCourtCheck() {
     return;
   }
 
-  if (hasInsolvencySign || debt >= 500000) {
+  if (hasInsolvencySign) {
     courtCheckResult.classList.add('is-warn');
     courtCheckResult.innerHTML = '<strong>Судебный порядок можно рассматривать.</strong><br>Соберите документы о долгах, доходах, имуществе и исполнительных производствах. Долг меньше 500 000 руб. сам по себе не блокирует обращение, если есть признаки неплатежеспособности или недостаточности имущества.';
     return;
@@ -206,7 +206,13 @@ function updateMfcCheck() {
   const ground = data.get('mfcGround');
   const recentBankruptcy = data.get('mfcRecentBankruptcy') === 'on';
   const inRange = debt >= 25000 && debt <= 1000000;
+  const checked = (name) => data.get(name) === 'on';
   const hasGround = ground && ground !== 'none';
+  const creditorsReady = checked('mfcCreditorsReady');
+  const closedReady = ground === 'closed' && checked('mfcReturned46') && checked('mfcNoOpenAfterReturn');
+  const socialReady = ['pension', 'benefit', 'svo'].includes(ground) && checked('mfcExecOver1') && checked('mfcNoPropertySocial') && checked('mfcSocialDocs');
+  const oldReady = ground === 'old' && checked('mfcExecOver7') && checked('mfcOldDocs');
+  const fullReady = inRange && creditorsReady && (closedReady || socialReady || oldReady);
 
   mfcCheckResult.classList.remove('is-ok', 'is-warn', 'is-no');
 
@@ -216,7 +222,7 @@ function updateMfcCheck() {
     return;
   }
 
-  if (inRange && hasGround) {
+  if (fullReady) {
     mfcCheckResult.classList.add('is-ok');
     mfcCheckResult.innerHTML = '<strong>Предварительно МФЦ подходит.</strong><br>Проверьте справки по выбранному основанию и обязательно внесите всех известных кредиторов в список. Неуказанные требования не будут списаны.';
     return;
@@ -225,6 +231,30 @@ function updateMfcCheck() {
   if (!inRange && hasGround) {
     mfcCheckResult.classList.add('is-warn');
     mfcCheckResult.innerHTML = '<strong>Основание есть, но сумма долга не подходит для МФЦ.</strong><br>Для внесудебного порядка нужен долг от 25 000 до 1 000 000 руб. Проверьте расчет суммы.';
+    return;
+  }
+
+  if (!creditorsReady && hasGround) {
+    mfcCheckResult.classList.add('is-warn');
+    mfcCheckResult.innerHTML = '<strong>Пока нельзя подавать заявление.</strong><br>Для МФЦ нужен список всех известных кредиторов. Если кредитора не указать, его требование не будет списано.';
+    return;
+  }
+
+  if (ground === 'closed') {
+    mfcCheckResult.classList.add('is-no');
+    mfcCheckResult.innerHTML = '<strong>По этому основанию МФЦ пока не подходит.</strong><br>Нужны оба условия: возврат исполнительного документа по п. 4 ч. 1 ст. 46 Закона № 229-ФЗ и отсутствие новых неоконченных или непрекращенных исполнительных производств после такого возврата.';
+    return;
+  }
+
+  if (['pension', 'benefit', 'svo'].includes(ground)) {
+    mfcCheckResult.classList.add('is-no');
+    mfcCheckResult.innerHTML = '<strong>По социальной категории условий пока недостаточно.</strong><br>Нужны исполнительный документ старше 1 года, его предъявление к исполнению и неполное исполнение, отсутствие имущества для взыскания, а также справки или межведомственные сведения.';
+    return;
+  }
+
+  if (ground === 'old') {
+    mfcCheckResult.classList.add('is-no');
+    mfcCheckResult.innerHTML = '<strong>По основанию «7 лет» условий пока недостаточно.</strong><br>Нужен исполнительный документ старше 7 лет, который предъявлялся к исполнению и не исполнен полностью, а также справка или межведомственные сведения.';
     return;
   }
 
